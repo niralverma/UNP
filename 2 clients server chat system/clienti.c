@@ -29,10 +29,9 @@ while(1){
       write(net_socket,data, strlen(data));
 
       n=recv(net_socket, data,200,0);
+    printf("%s\n",data);
 
-
-      printf("%s\n",data);
-        n=recv(net_socket, data,200,0);
+      n=recv(net_socket, data,200,0);
       printf("%s\n",data);
       write(net_socket,data, strlen(data));
 
