@@ -44,3 +44,11 @@ while(1){
 
     return(0);
 }
+
+
+
+run this as 
+
+
+./clienttime.o 127.0.0.1 portnumberbyserver
+
