@@ -9,7 +9,7 @@
 #include<string.h>
 int main(int argc, char *argv[])
 {
-    int n,len;
+    int n;
     char data[201];
     //create a socket
     int net_socket;
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     server_address.sin_family = AF_INET;
     server_address.sin_port = htons(0);
     server_address.sin_addr.s_addr = htonl(INADDR_ANY);
-
+    int len=sizeof(struct sockaddr_in);
     bind(net_socket, (struct sockaddr*)&server_address,sizeof(server_address));
 
     getsockname(net_socket,(struct sockaddr *) &server_address, &len);
