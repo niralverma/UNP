@@ -17,7 +17,8 @@ int main(int argc,char *argv[])
         server_addr.sin_family=AF_INET;
    server_addr.sin_port = htons(0);
     server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    
+        int len=sizeof(struct sockaddr_in);
+
         //bind the socket to port
         bind(l_socket,(struct sockaddr *) &server_addr,sizeof(server_addr));
 
