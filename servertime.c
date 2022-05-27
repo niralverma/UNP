@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     bind(net_socket, (struct sockaddr*)&server_address,sizeof(server_address));
 
     getsockname(net_socket,(struct sockaddr *) &server_address, &len);
-    printf("After bind ephemeral port=%d\n",(int)ntohs(server_address.sin_port));
+    printf("Port number is=%d\n",(int)ntohs(server_address.sin_port));
 
     listen(net_socket,10);
     time_t tick;
