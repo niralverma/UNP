@@ -7,10 +7,17 @@
 #include<stdlib.h>
 //#include<time.h>
 //#include<string.h>
+void do_nothing(int sig)
+{
+pid_t childid;
+childid=wait(NULL);
+printf("%d child has terminated...\n", childid);
+}
 int main(int argc,char *argv[])
 {
 
-signal(SIGCHLD,SIG_IGN);
+//signal(SIGCHLD,SIG_IGN);
+signal(SIGCHLD,do_nothing);
         //listening socket
         int l_socket;
         l_socket=socket(AF_INET, SOCK_STREAM, 0);
