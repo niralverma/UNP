@@ -3,22 +3,25 @@
 #include<arpa/inet.h>
 #include<unistd.h>
 #include<string.h>
-
+#include<signal.h>
+#include<stdlib.h>
 //#include<time.h>
 //#include<string.h>
 int main(int argc,char *argv[])
 {
+
+signal(SIGCHLD,SIG_IGN);
         //listening socket
         int l_socket;
         l_socket=socket(AF_INET, SOCK_STREAM, 0);
+        int len=sizeof(struct sockaddr_in);
 
         //store server details
         struct sockaddr_in server_addr;
         server_addr.sin_family=AF_INET;
    server_addr.sin_port = htons(0);
     server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-        int len=sizeof(struct sockaddr_in);
-
+    
         //bind the socket to port
         bind(l_socket,(struct sockaddr *) &server_addr,sizeof(server_addr));
 
@@ -52,9 +55,9 @@ int main(int argc,char *argv[])
                      write(s_socket, data, sizeof(data));
                }
                close(s_socket);
+               exit(0);
                   }
                   else {
-                    
                           close(s_socket);
                   }
           }
