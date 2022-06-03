@@ -1,4 +1,5 @@
-  
+#System header files declare the interfaces to parts of the operating system. 
+#We include them in our program to supply the definitions and declarations we need to invoke system calls and libraries.
 #include<stdio.h>
 #include<sys/socket.h>
 #include<arpa/inet.h>
@@ -9,25 +10,31 @@
 #include<sys/wait.h>
 //#include<time.h>
 //#include<string.h>
+
+#declaring global variables to access inside any of the functions defined for the program
   int l_socket;
   int status;
+
+#defining this function to specify that the signal should be ignored
 void do_nothing(int sig)
 {
 pid_t childid;
 childid=wait(NULL);
-printf("%d child has terminated...\n", childid);
+printf("%d child has terminated...\n", childid);  #prints the statement
 }
+
+#to print the exiting statement before stopping the process
 void handle_sigint(int sig)
 {
 printf("The server program is exiting ...\n");
-close(l_socket);
-exit(0);
+close(l_socket);  #closes the socket
+exit(0); #exits the program
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[])  #A main is a predefined keyword or function in C. It is the first function of every C program that is responsible for starting the execution and termination of the program
 {
 
-        signal(SIGINT,handle_sigint);
+        signal(SIGINT,handle_sigint); 
 //signal(SIGCHLD,SIG_IGN);
 signal(SIGCHLD,do_nothing);
         //listening socket
