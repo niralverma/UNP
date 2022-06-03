@@ -101,7 +101,7 @@ signal(SIGCHLD,do_nothing);
                  if(m==0)
                          break;
                       data[m]='\0';
-                     printf("Recieved from client %d %s\n",n,data);
+                     printf("Received from client %d %s port number  %d  and ip: %s:%d\n",n,data,server_addr.sin_port,inet_ntoa(client_addr.sin_addr));
                      printf("Enter:");
                      scanf("%s",data2);
                      write(s_socket, data2, strlen(data2));
