@@ -49,10 +49,12 @@ while(1){
       write(net_socket,data, strlen(data));
       
  n=recv(net_socket, data,200,0);
-    printf("%s\n",data);
+    printf("Received from client %d %s port number  %d  and ip: %s:%d\n",n,data,server_address.sin_port,inet_ntoa(server_address.sin_addr));
+    
 
       n=recv(net_socket, data,200,0);
-      printf("%s\n",data);
+       printf("Received from client %d %s port number  %d  and ip: %s:%d\n",n,data,server_address.sin_port,inet_ntoa(server_address.sin_addr));
+    
       write(net_socket,data, strlen(data));
 
 }
